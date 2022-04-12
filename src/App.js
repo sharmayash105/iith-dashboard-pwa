@@ -84,7 +84,6 @@ function App() {
     setEventList(newEventList);
     setCustomEvents((currentList) => [...currentList, newEvent]);
   };
-
   const updateTT = () => {
     if (user && !userLoading && !userError) {
       const docRef = db.collection('users').doc(user.uid);
@@ -155,31 +154,21 @@ function App() {
 
   if (userLoading) {
     return (
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Container>
-          <div
-            style={{
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%,-50%)',
-            }}
-          >
-            <CircularProgress />
-          </div>
-        </Container>
-      </ThemeProvider>
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%,-50%)',
+        }}
+      >
+        <CircularProgress />
+      </div>
     );
   }
 
   if (!user) {
-    return (
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Login />
-      </ThemeProvider>
-    );
+    return <Login />;
   }
   if (window.location.pathname === '/iith-dashboard-pwa') window.location.href = '/';
   return (

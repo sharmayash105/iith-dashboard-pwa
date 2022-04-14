@@ -114,12 +114,12 @@ function TimeTable({ eventList, handleNewCustomEvent }) {
 
       if (weekly.checked) {
         for (let i = 0; i < 4; i += 1) {
-          handleNewCustomEvent(title, startDate.getDate() + 7, endDate);
+          handleNewCustomEvent(title, startDate.setDate(startDate.getDate() + 7), endDate);
         }
       }
       if (daily.checked) {
-        for (let i = 1; i < 7; i += 1) {
-          handleNewCustomEvent(title, startDate.getDate() + i, endDate);
+        for (let i = 1; i < 8; i += 1) {
+          handleNewCustomEvent(title, startDate.setDate(startDate.getDate() + i), endDate);
         }
       }
     } else {
